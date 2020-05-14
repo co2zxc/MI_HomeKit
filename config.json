@@ -1,0 +1,31 @@
+{
+    "bridge": {
+        "name": "myhomekit",
+        "username": "AC:A3:5C:EA:88:EC",
+        "port":13358,
+        "pin": "612-64-888"
+    },
+    "platforms": [
+        {
+            "platform": "MiAqaraPlatform",
+            "gateways": {
+                "7811dcfaa94c": "1EF274A1F03143E0"
+            }	
+        },
+	{
+	"platform": "MiOutletPlatform",
+	"deviceCfgs": [{
+        "type": "MiPlugBase",
+        "ip": "192.168.50.167",
+        "token": "a9f9cfb966be9d722a6c65ccb1a07d00",
+        "outletName": "living room outlet",
+        "outletDisable": false,
+        "temperatureName": "living room outlet temperature",
+        "temperatureDisable": false,
+        "switchLEDName": "living room led light switch",
+        "switchLEDDisable": true
+			}]
+		}
+	
+	]
+}

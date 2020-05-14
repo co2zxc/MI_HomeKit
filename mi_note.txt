@@ -1,0 +1,132 @@
+陸版米家 不能 google助理
+
+台版米家 能 google助理
+
+目前QQ給的是陸版
+
+ ssh pi@172.17.135.107
+ 
+ sudo apt install vim
+  sudo npm install n -g
+  sudo n 8.4.0
+  sudo apt-get install libavahi-compat-libdnssd-dev
+ sudo npm install -g --unsafe-perm homebridge
+ sudo npm install -g homebridge-mi-aqara //安裝支援小米多功能網關的插件
+  
+  sudo npm install miio
+  sudo npm install homebridge-miio
+  
+ sudo  npm install -g homebridge-mi-outlet
+  
+  
+  sudo apt-get install screen
+
+mkdir ~/.homebridge 
+cd ~/.homebridge
+vim config.json
+
+{
+    "platforms": [{
+        "platform": "MiAqaraPlatform",
+        "gateways": {
+            "7811dcfaa94c": "1EF274A1F03143E0"
+        }
+    }]
+}
+"7811dcfaa94c"
+
+"1EF274A1F03143E0"
+
+
+//
+{
+    "bridge": {
+        "name": "myhomekit",
+        "username": "AC:A3:5C:EA:88:EC",
+        "port":13358,
+        "pin": "412-64-318"
+    },
+    "platforms": [
+        {
+            "platform": "MiAqaraPlatform",
+            "gateways": {
+                "7811dcfaa94c": "1EF274A1F03143E0"
+            }
+        }
+    ]
+}
+
+///
+
+{
+    "bridge": {
+        "name": "myhomekit",
+        "username": "AC:A3:5C:EA:88:EC",
+        "port":13358,
+        "pin": "412-64-318"
+    },
+    "platforms": [
+        {
+            "platform": "MiAqaraPlatform",
+            "gateways": {
+                "7811dcfaa94c": "1EF274A1F03143E0"
+            }
+        },
+		"deviceCfgs": {
+        "type": "MiPlugBase",
+        "ip": "192.168.0.104",
+        "token": "a9f9cfb966be9d722a6c65ccb1a07d00",
+        "outletName": "living room outlet",
+        "outletDisable": false,
+        "temperatureName": "living room outlet temperature",
+        "temperatureDisable": false,
+        "switchLEDName": "living room led light switch",
+        "switchLEDDisable": true
+		}
+		
+	]
+}
+
+//
+{
+    "bridge": {
+        "name": "myhomekit",
+        "username": "AC:A3:5C:EA:88:EC",
+        "port":13358,
+        "pin": "412-64-318"
+    },
+    "platforms": [
+        {
+            "platform": "MiAqaraPlatform",
+            "gateways": {
+                "7811dcfaa94c": "1EF274A1F03143E0"
+            }
+        },
+        {
+        "platform": "MiOutletPlatform",
+        "deviceCfgs": [{
+        "type": "MiPlugBase",
+        "ip": "192.168.0.104",
+        "token": "a9f9cfb966be9d722a6c65ccb1a07d00",
+        "outletName": "living room outlet",
+        "outletDisable": false,
+        "temperatureName": "living room outlet temperature",
+        "temperatureDisable": false,
+        "switchLEDName": "living room led light switch",
+        "switchLEDDisable": true
+                        }]
+                }
+
+        ]
+}
+
+
+sudo nohup homebridge > /var/log/homebridge.log 2>&1 &
+ 
+sudo vim /etc/rc.local
+  
+在 exit 0 前添加一行代碼：
+
+sudo nohup homebridge > /var/log/homebridge.log 2>&1 &
+
+
